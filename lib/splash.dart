@@ -25,7 +25,7 @@ class Splash extends StatelessWidget {
                   'Breathe',
                   style: TextStyle(
                     fontFamily: "Lostamasta",
-                    color: Colors.black,
+                    color: Color(0xFFB974E3), // Replace RRGGBB with your color's RGB values
                     fontSize: 55,
                     fontWeight: FontWeight.bold,
                   ),
