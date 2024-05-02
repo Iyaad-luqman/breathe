@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import './journal_entry.dart';
 
 class CalendarPage extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _CalendarPageState extends State<CalendarPage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/background.jpg"),
+            image: AssetImage("assets/images/d.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -76,24 +77,6 @@ class _CalendarPageState extends State<CalendarPage> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  final DateTime date;
-
-  DetailPage({required this.date});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Details"),
-      ),
-      body: Center(
-        child: Text('Selected date: ${date.toString()}'),
       ),
     );
   }
