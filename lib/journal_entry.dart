@@ -1,8 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:permission_handler/permission_handler.dart';
+import 'dart:async';
+
+import 'package:rxdart/rxdart.dart';
+import 'package:speech_to_text/speech_recognition_error.dart';
+import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class DetailPage extends StatefulWidget {
   final DateTime date; // Required variable
@@ -14,14 +18,73 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  stt.SpeechToText _speech = stt.SpeechToText();
-  String _text = 'Speak Now';
+  final SpeechToText speech = SpeechToText();
 
-  @override
-  void initState() {
-    super.initState();
+  var errors = StreamController<SpeechRecognitionError>();
+  var statuses = BehaviorSubject<String>();
+  var words = StreamController<SpeechRecognitionResult>();
+
+  var _localeId = '';
+  bool _continueListening = false; // Flag to control continuous listening
+
+  Future<bool> initSpeech() async {
+    bool hasSpeech = await speech.initialize(
+      onError: errorListener,
+      onStatus: statusListener,
+    );
+
+    if (hasSpeech) {
+      var systemLocale = await speech.systemLocale();
+      _localeId = systemLocale!.localeId;
+    }
+
+    return hasSpeech;
+  }
+
+  void startListening() {
+    _continueListening = true; // Enable continuous listening
     _listen();
   }
+
+  void _listen() {
+    speech.stop(); // Ensure any previous session is stopped
+    speech.listen(
+      onResult: resultListener,
+      listenFor: Duration(minutes: 3),
+      localeId: _localeId,
+      onSoundLevelChange: null,
+      cancelOnError: true,
+      partialResults: true,
+    );
+  }
+
+  void errorListener(SpeechRecognitionError error) {
+    errors.add(error);
+  }
+
+  void statusListener(String status) {
+    statuses.add(status);
+    if (status == "notListening" && _continueListening) {
+      _listen(); // Restart listening if it was stopped unintentionally
+    }
+  }
+
+  void resultListener(SpeechRecognitionResult result) {
+    words.add(result);
+  }
+
+  void stopListening() {
+    _continueListening = false; // Disable continuous listening
+    speech.stop();
+  }
+
+  void cancelListening() {
+    _continueListening = false; // Ensure listening doesn't restart
+    speech.cancel();
+  }
+
+  @override
+  
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,47 +92,61 @@ class _DetailPageState extends State<DetailPage> {
         title: Text("Details"),
       ),
       body: Center(
-        child: Container(alignment: Alignment.center
-        ,
-        child: Column(children: [
-        Card(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Text(
-              _text,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(children: [
+            Card(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Container(
+                  height: 500,
+                  width: 330, // Set your desired height here
+                  child: StreamBuilder<SpeechRecognitionResult>(
+                    stream: words.stream, // Your StreamController's stream
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        // Extracting text from the SpeechRecognitionResult
+                        String textToShow = snapshot.data!.recognizedWords; // Assuming recognizedWords is the text
+                        return Text(
+                          textToShow,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      } else {
+                        // Placeholder text or an empty Container when there's no data
+                        return Text(
+                          "Listening...",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
+
+    
         SizedBox(
           height: 20,
         
         ),
-        GestureDetector(
-                    onTap: () {
-                  _listen();                },
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: ClipOval(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 5.0),
-
-                        child: Container(
-                          width: 100.0,
-                          height: 100.0,
-                          child: Icon(
-                            Icons.mic,
-                            color: Color.fromARGB(255, 144, 202, 255), // Lighter shade
-                            size: 45,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                )
+      ElevatedButton(
+        onPressed: () {
+          startListening();
+        },
+        child: Icon(Icons.mic),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blue, // Corrected from primary to backgroundColor
+          foregroundColor: Colors.white, // Corrected from onPrimary to foregroundColor
+          shape: CircleBorder(), // Circular button
+          padding: EdgeInsets.all(20), // Button size
+        ),
+      )
         ],),
         ),
       ),
@@ -77,24 +154,5 @@ class _DetailPageState extends State<DetailPage> {
   }
 
 
-// Ensure _listen is a Future<void> function
-Future<void> _listen() async {
-  var status = await Permission.microphone.status;
-  if (!status.isGranted) {
-    await Permission.microphone.request();
-  }
-  bool available = await _speech.initialize(
-    onStatus: (val) => print('onStatus: $val'),
-    onError: (val) => print('onError: $val'),
-  );
-  if (available) {
-    await _speech.listen(
-      onResult: (val) => setState(() {
-        _text = val.recognizedWords;
-      }),
-    );
-    // Assuming _speech.listen is asynchronous and you wait for it to finish
-    // You might need to adjust this based on how your speech to text package signals completion
-  }
-}
+
 }
