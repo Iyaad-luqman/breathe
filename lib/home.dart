@@ -105,15 +105,14 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                    SizedBox(
-                    height: 90,
+                    height: 30,
                   ),
                   Container(
                     child: Image.asset(
-                      'assets/Icons/addons.png', // Replace with the path to your icon
-                      width: 24,
-                      height: 24,
-  ),
-),
+                      'assets/images/addons.png', // Replace with the path to your icon
+                     
+                      ),
+                    ),
                    
                    
                               
