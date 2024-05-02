@@ -1,4 +1,4 @@
-import 'package:breathe/plain_template.dart';
+import 'package:breathe/home.dart';
 import 'package:breathe/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';

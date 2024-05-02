@@ -1,3 +1,4 @@
+import 'package:breathe/home.dart';
 import 'package:breathe/login.dart';
 import 'package:flutter/material.dart';
 class Splash extends StatelessWidget {
@@ -6,7 +7,7 @@ class Splash extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.push( context, MaterialPageRoute(builder: (context) => Login()), );
+          Navigator.push( context, MaterialPageRoute(builder: (context) => Home()), );
           // Add your onPress function here
         },
         child: Container(

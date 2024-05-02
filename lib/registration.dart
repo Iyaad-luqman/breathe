@@ -1,4 +1,4 @@
-import 'package:breathe/plain_template.dart';
+import 'package:breathe/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
@@ -153,7 +153,7 @@ class Registration extends StatelessWidget {
                           contentPadding: EdgeInsets.fromLTRB(
                               18 * fem, 18 * fem, 18 * fem, 19 * fem),
                           hintText: 'Username',
-                          hintStyle: TextStyle(color: Color(0xff8390a1)),
+                          hintStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         style: SafeGoogleFont(
                           'Urbanist',

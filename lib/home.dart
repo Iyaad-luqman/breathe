@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:breathe/chatbot.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -29,8 +30,11 @@ class _HomeState extends State<Home> {
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => Dashboard()));
       }
-      if (index == 1) {}
-      if (index == 2) {}
+      if (index == 0) {}
+      if (index == 1) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Chatbot()));
+      }
     });
   }
 
@@ -105,15 +109,14 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                    SizedBox(
-                    height: 90,
+                    height: 30,
                   ),
                   Container(
                     child: Image.asset(
-                      'assets/Icons/addons.png', // Replace with the path to your icon
-                      width: 24,
-                      height: 24,
-  ),
-),
+                      'assets/images/addons.png', // Replace with the path to your icon
+                     
+                      ),
+                    ),
                    
                    
                               
@@ -128,6 +131,7 @@ class _HomeState extends State<Home> {
               ),
             ),
           
+ 
           Positioned(
             bottom: 0,
             left: 0,
@@ -138,9 +142,9 @@ class _HomeState extends State<Home> {
               //   topRight: Radius.circular(30.0),
               // ),
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 110, sigmaY: 130),
+                filter: ImageFilter.blur(sigmaX: 90, sigmaY: 130),
                 child: BottomNavigationBar(
-                  backgroundColor: Color.fromARGB(255, 76, 51, 134).withOpacity(
+                  backgroundColor: Color.fromARGB(255, 31, 0, 102).withOpacity(
                       0), // make the BottomNavigationBar semi-transparent
                   items: <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
@@ -156,12 +160,13 @@ class _HomeState extends State<Home> {
                       icon: Container(
                         
                         child: Icon(
-                          Icons.book,
+                          Icons.chat_bubble_outline,
                           size: 30,
                         ), // replace with your custom icon
                       ),
                       label: '',
                     ),
+                    
                     BottomNavigationBarItem(
                       icon: Container(
                         child: Icon(
@@ -171,19 +176,11 @@ class _HomeState extends State<Home> {
                       ),
                       label: '',
                     ),
-                    BottomNavigationBarItem(
-                      icon: Container(
-                        child: Icon(
-                          Icons.chat_bubble,
-                          size: 30,
-                        ), // replace with your custom icon
-                      ),
-                      label: '',
-                    )
+                    
+                    
                   ],
                   currentIndex: _selectedIndex < 0 ? 0 : _selectedIndex,
                   selectedItemColor: Colors.amber[800],
-                  unselectedItemColor: Colors.white,
                   onTap: _onItemTapped,
                   showSelectedLabels:
                       false, // do not show labels for selected items
