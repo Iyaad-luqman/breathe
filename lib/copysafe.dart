@@ -10,12 +10,14 @@ class Chatbot extends StatefulWidget {
 }
 
 class _ChatbotState extends State<Chatbot> {
-    @override
+  List<String> messages = []; // This will hold the chat messages
+
+  @override
   void initState() {
     super.initState();
     // _checkFirebase();
   }
-  
+
   int _selectedIndex = -1;
 
   void _onItemTapped(int index) {
@@ -31,18 +33,16 @@ class _ChatbotState extends State<Chatbot> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     double hlen = MediaQuery.of(context).size.height;
     double wlen = MediaQuery.of(context).size.width;
 
-    // Return your widget here using the data
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false, // this will hide the back button
         title: Center(
-          child: Text('NeuroFit'), // replace 'Marks' with your desired title
+          child: Text('BREATHE'), // replace 'Marks' with your desired title
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -70,16 +70,16 @@ class _ChatbotState extends State<Chatbot> {
             ),
           ),
           SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+               child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
                   SizedBox(
                     height: 20,
                   ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30, 0, 0, 5),
                     child: Text(
-                      'Hello User!',
+                      '',
                       style: TextStyle(
                           fontSize: 23,
                           fontFamily: 'Manrope',
@@ -95,7 +95,7 @@ class _ChatbotState extends State<Chatbot> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
-                          'CareTaker',
+                          '',
                           style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Manrope',
@@ -117,7 +117,27 @@ class _ChatbotState extends State<Chatbot> {
                 ],
               ),
             ),
-          
+          Expanded(
+                  child: ListView.builder(
+                    itemCount: messages.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(messages[index]),
+                      );
+                    },
+                  ),
+                ),
+           TextField(
+                  onSubmitted: (String userInput) {
+                    setState(() {
+                      messages.add('User: $userInput');
+                    });
+                    var response = aiChatbotFunction(userInput); // You'll need to implement this function
+                    setState(() {
+                      messages.add('Bot: $response');
+                    });
+                  },
+                ), 
           Positioned(
             bottom: 0,
             left: 0,
@@ -177,4 +197,6 @@ class _ChatbotState extends State<Chatbot> {
       ),
     );
   }
+  
+  aiChatbotFunction(String userInput) {}
 }

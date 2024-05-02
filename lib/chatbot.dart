@@ -95,7 +95,7 @@ class _ChatbotState extends State<Chatbot> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
-                          'CareTaker',
+                          '',
                           style: TextStyle(
                               fontSize: 16,
                               fontFamily: 'Manrope',
