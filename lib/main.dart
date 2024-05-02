@@ -1,3 +1,4 @@
+import 'package:breathe/plain_template.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './splash.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         // Initialize SharedPreferences
         future: SharedPreferences.getInstance(),
         builder: (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {         
-            return Splash(); // Show splash screen while reading preferences
+            return Home(); // Show splash screen while reading preferences
         
         },
       ),

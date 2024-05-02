@@ -84,6 +84,27 @@ flutter:
       fonts:
         - asset: assets/fonts/splashfonts/Fontspring-DEMO-lostamasta-bold.otf
         - asset: assets/fonts/splashfonts/Fontspring-DEMO-lostamasta-medium.otf
-      #
+      
+
+    - family: Roimond
+      fonts:
+        - asset: assets/fonts/homepagefonts/Raimondfree-9YoOZ.otf
+    
+
+    - family: Romany
+      fonts:
+        - asset: assets/fonts/homepagefonts/Romany W07 Italic.ttf
+
+    - family: Epilogue
+      fonts:
+        - asset: assets/fonts/homepagefonts/Epilogue-Bold.otf
+    
+    - family: saint
+      fonts:
+        - asset: assets/fonts/homepagefonts/SaintHilton-ywByq.otf
+
+    - family: tide
+      fonts:
+        - asset: assets/fonts/homepagefonts/Tidelines-BF6596aa8f5b4e5.otf
       # For details regarding fonts from package dependencies,
     # see https://flutter.dev/custom-fonts/#from-packages
