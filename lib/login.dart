@@ -72,7 +72,7 @@ class Login extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              'assets/images/realbg.png',
+              'assets/images/Login.png',
             ),
           ),
         ),
@@ -198,7 +198,7 @@ class Login extends StatelessWidget {
                   width: double.infinity,
                   height: 56 * fem,
                   decoration: BoxDecoration(
-                    color: Color(0xff1e232c),
+                    color: Color.fromARGB(255, 255, 255, 255),
                     borderRadius: BorderRadius.circular(26 * fem),
                   ),
                   child: Center(
@@ -297,7 +297,7 @@ class Login extends StatelessWidget {
                               width: 12 * fem,
                               height: 24 * fem,
                               child: Image.asset(
-                                'assets/images/realbg.png',
+                                'assets/images/Login.png',
                                 width: 12 * fem,
                                 height: 24 * fem,
                               ),

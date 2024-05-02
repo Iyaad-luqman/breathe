@@ -75,7 +75,7 @@ class Registration extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              'assets/images/login-page-bg.png',
+              'assets/images/Login.png',
             ),
           ),
         ),
@@ -161,7 +161,7 @@ class Registration extends StatelessWidget {
                           fontSize: 15 * ffem,
                           fontWeight: FontWeight.w500,
                           height: 1.25 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
@@ -187,7 +187,7 @@ class Registration extends StatelessWidget {
                           contentPadding: EdgeInsets.fromLTRB(
                               18 * fem, 18 * fem, 18 * fem, 19 * fem),
                           hintText: 'Email',
-                          hintStyle: TextStyle(color: Color(0xff8390a1)),
+                          hintStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         style: SafeGoogleFont(
                           'Urbanist',
@@ -195,7 +195,7 @@ class Registration extends StatelessWidget {
                           fontSize: 15 * ffem,
                           fontWeight: FontWeight.w500,
                           height: 1.25 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
@@ -221,7 +221,7 @@ class Registration extends StatelessWidget {
                           contentPadding: EdgeInsets.fromLTRB(
                               18 * fem, 18 * fem, 18 * fem, 19 * fem),
                           hintText: 'Password',
-                          hintStyle: TextStyle(color: Color(0xff8390a1)),
+                          hintStyle: TextStyle(color: Color.fromARGB(255, 253, 254, 255)),
                         ),
                         style: SafeGoogleFont(
                           'Urbanist',
@@ -229,7 +229,7 @@ class Registration extends StatelessWidget {
                           fontSize: 15 * ffem,
                           fontWeight: FontWeight.w500,
                           height: 1.25 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
@@ -263,7 +263,7 @@ class Registration extends StatelessWidget {
                           fontSize: 15 * ffem,
                           fontWeight: FontWeight.w500,
                           height: 1.25 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
@@ -521,7 +521,7 @@ class Registration extends StatelessWidget {
                               ),
                             ),
                             TextSpan(
-                              text: 'Register Now',
+                              text: 'Login Now',
                               style: SafeGoogleFont(
                                 'Urbanist',
                                 decoration: TextDecoration.none,

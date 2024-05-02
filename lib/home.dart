@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
+import 'package:breathe/login.dart';
+import 'package:breathe/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -30,7 +33,10 @@ class _HomeState extends State<Home> {
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => Dashboard()));
       }
-      if (index == 0) {}
+      if (index == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Login()));
+      }
       if (index == 1) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Chatbot()));

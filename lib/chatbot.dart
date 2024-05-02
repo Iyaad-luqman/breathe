@@ -112,7 +112,9 @@ class _ChatbotState extends State<Chatbot> {
                             children: [
                               Expanded(
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                                  height: wlen * 0.14,
+                                  
+                                  padding: EdgeInsets.symmetric(horizontal: 26, vertical: 7),
                                   decoration: BoxDecoration(
                                     color: const Color.fromARGB(255, 0, 0, 0),
                                     borderRadius: BorderRadius.circular(20),
@@ -129,6 +131,9 @@ class _ChatbotState extends State<Chatbot> {
                               IconButton(
                                 icon: Icon(Icons.send, color: Colors.white),
                                 onPressed: () {
+                                  setState(() {
+                                    messages.add('User: ${messageController.text}');
+                                  });
                                   sendMessage();
                                 },
                               ),
@@ -224,7 +229,6 @@ Positioned(
         final botResponse = response.body;
   
         setState(() {
-          messages.add('User: ${messageController.text}');
           messages.add('Bot: $botResponse');
         });
       } else {
