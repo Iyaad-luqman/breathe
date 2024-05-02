@@ -67,12 +67,12 @@ class Login extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(30 * fem, 84 * fem, 29 * fem, 89 * fem),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Color(0xff19173d),
+          color: Color.fromARGB(246, 208, 200, 211),
           // borderRadius: BorderRadius.circular(50*fem),
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              'assets/images/login-page-bg.png',
+              'assets/images/realbg.png',
             ),
           ),
         ),
@@ -108,19 +108,13 @@ class Login extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 23 * fem),
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8 * fem),
-                border: Border.all(color: Color(0xffe8ecf4)),
-                color: Color(0xfff7f8f9),
+                
               ),
               child: Material(
                 child: TextField(
                   controller: _emailController,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
+                    
                     contentPadding: EdgeInsets.fromLTRB(
                         18 * fem, 18 * fem, 18 * fem, 19 * fem),
                     hintText: 'Enter your Email',
@@ -132,7 +126,7 @@ class Login extends StatelessWidget {
                     fontSize: 15 * ffem,
                     fontWeight: FontWeight.w500,
                     height: 1.25 * ffem / fem,
-                    color: Color(0xff000000),
+                    color: Color.fromARGB(255, 251, 250, 250),
                   ),
                 ),
               ),
@@ -142,9 +136,7 @@ class Login extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 22 * fem),
               width: double.infinity,
               decoration: BoxDecoration(
-                border: Border.all(color: Color(0xffe8ecf4)),
-                color: Color(0xfff7f7f8),
-                borderRadius: BorderRadius.circular(8 * fem),
+                
               ),
               child: Material(
                 child: TextField(
@@ -166,7 +158,7 @@ class Login extends StatelessWidget {
                     fontSize: 15 * ffem,
                     fontWeight: FontWeight.w500,
                     height: 1.25 * ffem / fem,
-                    color: Color(0xff000000),
+                    color: Color.fromARGB(255, 255, 255, 255),
                   ),
                 ),
               ),
@@ -305,7 +297,7 @@ class Login extends StatelessWidget {
                               width: 12 * fem,
                               height: 24 * fem,
                               child: Image.asset(
-                                'assets/images/facebookic.png',
+                                'assets/images/realbg.png',
                                 width: 12 * fem,
                                 height: 24 * fem,
                               ),
