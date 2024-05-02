@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -106,19 +107,14 @@ class _HomeState extends State<Home> {
                    SizedBox(
                     height: 90,
                   ),
-                   Padding(
-                     padding: const EdgeInsets.fromLTRB(24,0,0,0),
-                     child: Container(
-                      child: Text(
-                        'Your Mood Today',
-                        style: TextStyle(
-                          fontFamily: "montserrat",
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                     ),
-                   ),
+                  Container(
+                    child: Image.asset(
+                      'assets/Icons/addons.png', // Replace with the path to your icon
+                      width: 24,
+                      height: 24,
+  ),
+),
+                   
                    
                               
                   // Add a GridView.builder
