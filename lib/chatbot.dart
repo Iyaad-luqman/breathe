@@ -10,28 +10,7 @@ class Chatbot extends StatefulWidget {
 }
 
 class _ChatbotState extends State<Chatbot> {
-  List<String> messages = []; // This will hold the chat messages
-
-  @override
-  void initState() {
-    super.initState();
-    // _checkFirebase();
-  }
-
-  int _selectedIndex = -1;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-
-      if (index == 0) {
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => Dashboard()));
-      }
-      if (index == 1) {}
-      if (index == 2) {}
-    });
-  }
+   List<String> messages = ['Welcome to Chatbot'];
 
   @override
   Widget build(BuildContext context) {
@@ -40,149 +19,55 @@ class _ChatbotState extends State<Chatbot> {
 
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, // this will hide the back button
-        title: Center(
-          child: Text('BREATHE'), // replace 'Marks' with your desired title
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        flexibleSpace: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 90, sigmaY: 130),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 31, 0, 102).withOpacity(0),
-              ),
-            ),
-          ),
-        ),
+        title: Text('Chatbot'),
       ),
       body: Stack(
         children: [
-          Container(
-            height: hlen,
-            width: wlen,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/Dashboard.jpg'),
-                fit: BoxFit.cover,
+          Positioned(
+            top: hlen * 0.25, // Adjust these values as needed
+            left: wlen * 0.1,
+            child: Container(
+              height: hlen * 0.5, // Adjust these values as needed
+              width: wlen * 0.8,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
               ),
-            ),
-          ),
-          SafeArea(
-               child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 0, 0, 5),
-                    child: Text(
-                      '',
-                      style: TextStyle(
-                          fontSize: 23,
-                          fontFamily: 'Manrope',
-                          fontWeight: FontWeight.bold),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: messages.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Text(messages[index]),
+                        );
+                      },
                     ),
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 20,
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 0, 0, 0),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Enter a message',
                       ),
-                    
-                    
-                    ],
+                      onSubmitted: (String userInput) {
+                        setState(() {
+                          messages.add('User: $userInput');
+                        });
+                        var response = aiChatbotFunction(userInput); // You'll need to implement this function
+                        setState(() {
+                          messages.add('Bot: $response');
+                        });
+                      },
+                    ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  // Add a GridView.builder
-                  
-                  
-                  //code here
-
-
-
                 ],
-              ),
-            ),
-          Expanded(
-                  child: ListView.builder(
-                    itemCount: messages.length,
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(messages[index]),
-                      );
-                    },
-                  ),
-                ),
-           TextField(
-                  onSubmitted: (String userInput) {
-                    setState(() {
-                      messages.add('User: $userInput');
-                    });
-                    var response = aiChatbotFunction(userInput); // You'll need to implement this function
-                    setState(() {
-                      messages.add('Bot: $response');
-                    });
-                  },
-                ), 
-          Container(
-            child: Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: ClipRRect(
-                // borderRadius: BorderRadius.only(
-                //   topLeft: Radius.circular(30.0),
-                //   topRight: Radius.circular(30.0),
-                // ),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 90, sigmaY: 130),
-                  child: BottomNavigationBar(
-                    backgroundColor: Color.fromARGB(255, 31, 0, 102).withOpacity(
-                        0), // make the BottomNavigationBar semi-transparent
-                    items: <BottomNavigationBarItem>[
-                      BottomNavigationBarItem(
-                        icon: Container(
-                          child: Icon(
-                            Icons.home,
-                            size: 30,
-                          ), // replace with your custom icon
-                        ),
-                        label: '',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Container(
-                          
-                          child: Icon(
-                            Icons.medical_information,
-                            size: 30,
-                          ), // replace with your custom icon
-                        ),
-                        label: '',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Container(
-                          child: Icon(
-                            Icons.person,
-                            size: 30,
-                          ), // replace with your custom icon
-                        ),
-                        label: '',
-                      ),
-                    ],
-                    currentIndex: _selectedIndex < 0 ? 0 : _selectedIndex,
-                    selectedItemColor: Colors.amber[800],
-                    onTap: _onItemTapped,
-                    showSelectedLabels:
-                        false, // do not show labels for selected items
-                    showUnselectedLabels:
-                        false, // do not show labels for unselected items
-                  ),
-                ),
               ),
             ),
           ),
@@ -190,9 +75,13 @@ class _ChatbotState extends State<Chatbot> {
       ),
     );
   }
-  
-  aiChatbotFunction(String userInput) {
-    // Implement your chatbot logic here
-    return 'Hello!'; // Replace this with your chatbot's response
+
+  // You'll need to implement this function
+  String aiChatbotFunction(String userInput) {
+    // Process the user input and return the chatbot's response
+    // Add your implementation here
+
+    return ''; // Replace this with the actual chatbot response
   }
+    // Process the user input and return the chatbot's response
 }

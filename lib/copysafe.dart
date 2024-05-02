@@ -92,16 +92,7 @@ class _ChatbotState extends State<Chatbot> {
                         width: 20,
                       ),
                     
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        child: Text(
-                          '',
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontFamily: 'Manrope',
-                              fontWeight: FontWeight.w300),
-                        ),
-                      ),
+                    
                     ],
                   ),
                   SizedBox(
@@ -138,57 +129,59 @@ class _ChatbotState extends State<Chatbot> {
                     });
                   },
                 ), 
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: ClipRRect(
-              // borderRadius: BorderRadius.only(
-              //   topLeft: Radius.circular(30.0),
-              //   topRight: Radius.circular(30.0),
-              // ),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 90, sigmaY: 130),
-                child: BottomNavigationBar(
-                  backgroundColor: Color.fromARGB(255, 31, 0, 102).withOpacity(
-                      0), // make the BottomNavigationBar semi-transparent
-                  items: <BottomNavigationBarItem>[
-                    BottomNavigationBarItem(
-                      icon: Container(
-                        child: Icon(
-                          Icons.home,
-                          size: 30,
-                        ), // replace with your custom icon
+          Container(
+            child: Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: ClipRRect(
+                // borderRadius: BorderRadius.only(
+                //   topLeft: Radius.circular(30.0),
+                //   topRight: Radius.circular(30.0),
+                // ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 90, sigmaY: 130),
+                  child: BottomNavigationBar(
+                    backgroundColor: Color.fromARGB(255, 31, 0, 102).withOpacity(
+                        0), // make the BottomNavigationBar semi-transparent
+                    items: <BottomNavigationBarItem>[
+                      BottomNavigationBarItem(
+                        icon: Container(
+                          child: Icon(
+                            Icons.home,
+                            size: 30,
+                          ), // replace with your custom icon
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Container(
-                        
-                        child: Icon(
-                          Icons.medical_information,
-                          size: 30,
-                        ), // replace with your custom icon
+                      BottomNavigationBarItem(
+                        icon: Container(
+                          
+                          child: Icon(
+                            Icons.medical_information,
+                            size: 30,
+                          ), // replace with your custom icon
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Container(
-                        child: Icon(
-                          Icons.person,
-                          size: 30,
-                        ), // replace with your custom icon
+                      BottomNavigationBarItem(
+                        icon: Container(
+                          child: Icon(
+                            Icons.person,
+                            size: 30,
+                          ), // replace with your custom icon
+                        ),
+                        label: '',
                       ),
-                      label: '',
-                    ),
-                  ],
-                  currentIndex: _selectedIndex < 0 ? 0 : _selectedIndex,
-                  selectedItemColor: Colors.amber[800],
-                  onTap: _onItemTapped,
-                  showSelectedLabels:
-                      false, // do not show labels for selected items
-                  showUnselectedLabels:
-                      false, // do not show labels for unselected items
+                    ],
+                    currentIndex: _selectedIndex < 0 ? 0 : _selectedIndex,
+                    selectedItemColor: Colors.amber[800],
+                    onTap: _onItemTapped,
+                    showSelectedLabels:
+                        false, // do not show labels for selected items
+                    showUnselectedLabels:
+                        false, // do not show labels for unselected items
+                  ),
                 ),
               ),
             ),
@@ -198,5 +191,8 @@ class _ChatbotState extends State<Chatbot> {
     );
   }
   
-  aiChatbotFunction(String userInput) {}
+  aiChatbotFunction(String userInput) {
+    // Implement your chatbot logic here
+    return 'Hello!'; // Replace this with your chatbot's response
+  }
 }
