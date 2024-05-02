@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:breathe/home.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Chatbot extends StatefulWidget {
   @override
@@ -19,8 +22,8 @@ class _ChatbotState extends State<Chatbot> {
       _selectedIndex = index;
 
       if (index == 0) {
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => Dashboard()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
       }
       if (index == 0) {}
       if (index == 1) {
@@ -204,17 +207,34 @@ Positioned(
 
   }
 
-  void sendMessage() {
+  void sendMessage() async {
     if (messageController.text.isNotEmpty) {
-      setState(() {
-        messages.add('User: ${messageController.text}');
-        // Simulate a bot response
-        messages.add('Bot: Thanks for your message!');
-      });
+      final response = await http.post(
+        Uri.parse('http://192.168.92.198:5000/process-text'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'text': messageController.text,
+        }),
+      );
+  
+      if (response.statusCode == 200) {
+        // Assuming the response body is plain text
+        final botResponse = response.body;
+  
+        setState(() {
+          messages.add('User: ${messageController.text}');
+          messages.add('Bot: $botResponse');
+        });
+      } else {
+        // Handle error or unsuccessful response
+        print('Failed to load response from API');
+      }
+  
       messageController.clear(); // Clear the text field after sending
     }
   }
-
   @override
   void dispose() {
     messageController.dispose(); // Dispose the controller when the widget is disposed
