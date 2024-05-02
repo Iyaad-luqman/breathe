@@ -1,12 +1,12 @@
+import 'package:breathe/login.dart';
 import 'package:flutter/material.dart';
-import './calander.dart';
 class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.push( context, MaterialPageRoute(builder: (context) => CalendarPage()), );
+          Navigator.push( context, MaterialPageRoute(builder: (context) => Login()), );
           // Add your onPress function here
         },
         child: Container(
