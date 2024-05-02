@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
       }
       if (index == 2) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Login()));
+            context, MaterialPageRoute(builder: (context) => Registration()));
       }
       if (index == 1) {
         Navigator.push(
