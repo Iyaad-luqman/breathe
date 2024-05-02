@@ -17,7 +17,21 @@ class Splash extends StatelessWidget {
             ),
           ),
           child: Center(
-            child: Image.asset('assets/images/logo.png'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset('assets/images/logo.png'),
+                Text(
+                  'Breathe',
+                  style: TextStyle(
+                    fontFamily: "Lostamasta",
+                    color: Colors.black,
+                    fontSize: 55,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
