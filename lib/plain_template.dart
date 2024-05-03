@@ -23,7 +23,7 @@ Widget build(BuildContext context) {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/communitypage.png'), // Replace with your image path 
+              image: AssetImage('assets/images/CommunityPage.png'), // Replace with your image path 
               fit: BoxFit.cover,
             ),
           ),
