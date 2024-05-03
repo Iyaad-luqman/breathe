@@ -1,12 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class med extends StatefulWidget {
+class Meditation extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _MeditationState createState() => _MeditationState();
 }
 
-class _HomeState extends State<med> {
+class _MeditationState extends State<Meditation> {
   int _selectedIndex = -1;
 
   void _onItemTapped(int index) {
