@@ -95,9 +95,9 @@ class _HomeState extends State<Home> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(30, 0, 0, 5),
                     child: Text(
-                      'Good morning',
+                      'Good morning,',
                       style: TextStyle(
-                          fontSize: 29,
+                          fontSize: 24,
                           fontFamily: 'epilogue',
                           fontWeight: FontWeight.bold),
                     ),
@@ -111,10 +111,11 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
-                          'Mishal',
+                          'Rithika',
                           style: TextStyle(
                               fontSize: 40,
-                              fontFamily: 'Romany',
+                              color: Color.fromARGB(255, 125, 25, 150),
+                              fontFamily: 'epilogue',
                               fontWeight: FontWeight.w500),
                         ),
                       ),
@@ -123,13 +124,7 @@ class _HomeState extends State<Home> {
                    SizedBox(
                     height: 70,
                   ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Image.asset(
-                      'assets/images/addons1.png', // Replace with the path to your icon
-                     
-                      ),
-                    ),
+                  
                     Container(
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: GestureDetector(

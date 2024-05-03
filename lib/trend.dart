@@ -34,7 +34,7 @@ class _CommunityPageState extends State<Pie> {
     "Happy": 75,
     "Fear": 12,
     "Anxious": 09,
-    "Ionic": 04,
+    "Angry": 04,
   };
   int _selectedIndex = -1;
 
@@ -61,11 +61,11 @@ Widget build(BuildContext context) {
             Container(
               margin: EdgeInsets.only(top: 50),
               child: Text(
-                'Mood Tracker',
+                'Trend Analysis',
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: 35,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 
+                  fontFamily: 'Nexa',
                 ),
               ),
             ),
@@ -76,6 +76,20 @@ Widget build(BuildContext context) {
           ],
         ),
         PieChart(dataMap: dataMap),
+       
+        Container(
+              margin: EdgeInsets.only(top: 520),
+              child: Center(
+                child: Text(
+                  'Domainant Mood: Happy',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Nexa',
+                  ),
+                ),
+              ),
+            ),
                Positioned(
             bottom: 0,
             left: 0,

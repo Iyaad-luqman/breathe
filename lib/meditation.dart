@@ -1,8 +1,11 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:breathe/home.dart';
 import 'package:breathe/chatbot.dart';
+import 'package:audioplayers/audioplayers.dart'; // Import the audioplayers package
+
 
 
 class med extends StatefulWidget {
@@ -12,6 +15,17 @@ class med extends StatefulWidget {
 
 class _MeditationState extends State<med> {
   int _selectedIndex = 2;
+final AudioPlayer _audioPlayer = AudioPlayer(); // Initialize the AudioPlayer
+
+  @override
+  void initState() {
+    super.initState();
+    _playAudio(); // Call _playAudio when the widget is initialized
+  }
+
+  void _playAudio() async {
+    await _audioPlayer.play(AssetSource('assets/images/audio.mp3')); // Play audio.mp3 from assets
+  }
 
 
   void _onItemTapped(int index) {
