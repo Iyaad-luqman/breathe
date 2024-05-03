@@ -5,6 +5,7 @@ import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
 import 'package:breathe/login.dart';
 import 'package:breathe/meditation.dart';
+import 'package:breathe/plain_template.dart';
 import 'package:breathe/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -120,8 +121,16 @@ class _HomeState extends State<Home> {
                     height: 70,
                   ),
                   Container(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                     child: Image.asset(
-                      'assets/images/addons.png', // Replace with the path to your icon
+                      'assets/images/addons1.png', // Replace with the path to your icon
+                     
+                      ),
+                    ),
+                    Container(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: Image.asset(
+                      'assets/images/addonspre.png', // Replace with the path to your icon
                      
                       ),
                     ),
@@ -152,6 +161,9 @@ class _HomeState extends State<Home> {
                           Container(
                             child: GestureDetector(
                               onTap: () {
+                                 Navigator.push(
+            context, MaterialPageRoute(builder: (context) => CommunityPage()));
+                              // Add your functionality here
                                 // Add your functionality here
                               },
                               child: Image.asset(
@@ -164,7 +176,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     SizedBox(
-                      height: 80,
+                      height: 60,
                     ),
                     Container(
                     child: Image.asset(
