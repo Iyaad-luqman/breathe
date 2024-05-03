@@ -7,7 +7,7 @@ class Splash extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.push( context, MaterialPageRoute(builder: (context) => Home()), );
+          Navigator.push( context, MaterialPageRoute(builder: (context) => Login()), );
           // Add your onPress function here
         },
         child: Container(

@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
+import 'package:breathe/login.dart';
+import 'package:breathe/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -30,7 +33,10 @@ class _HomeState extends State<Home> {
         // Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => Dashboard()));
       }
-      if (index == 0) {}
+      if (index == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Registration()));
+      }
       if (index == 1) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Chatbot()));
@@ -109,7 +115,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                    SizedBox(
-                    height: 30,
+                    height: 70,
                   ),
                   Container(
                     child: Image.asset(
@@ -117,7 +123,53 @@ class _HomeState extends State<Home> {
                      
                       ),
                     ),
-                   
+                     SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(30, 0, 20, 0),
+                      child: Row(
+                        children: [
+                            Container(
+                            child: GestureDetector(
+                              onTap: () {
+                              // Add your functionality here
+                              },
+                              child: Image.asset(
+                              'assets/images/journal.png',
+                              height: 0.16 * wlen,
+                              ),
+                            ),
+                            ),
+                          SizedBox(
+                            width: 20,
+                          
+                          ),
+                          Container(
+                            child: GestureDetector(
+                              onTap: () {
+                                // Add your functionality here
+                              },
+                              child: Image.asset(
+                                'assets/images/community.png',
+                                height: 0.16 * wlen,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                    ),
+                    Container(
+                    child: Image.asset(
+                      'assets/images/addons2.png', // Replace with the path to your icon
+                     
+                      ),
+                    ),
+                    
+
                    
                               
                   // Add a GridView.builder
