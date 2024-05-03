@@ -115,7 +115,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                    SizedBox(
-                    height: 30,
+                    height: 70,
                   ),
                   Container(
                     child: Image.asset(
@@ -123,7 +123,53 @@ class _HomeState extends State<Home> {
                      
                       ),
                     ),
-                   
+                     SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(30, 0, 20, 0),
+                      child: Row(
+                        children: [
+                            Container(
+                            child: GestureDetector(
+                              onTap: () {
+                              // Add your functionality here
+                              },
+                              child: Image.asset(
+                              'assets/images/journal.png',
+                              height: 0.16 * wlen,
+                              ),
+                            ),
+                            ),
+                          SizedBox(
+                            width: 20,
+                          
+                          ),
+                          Container(
+                            child: GestureDetector(
+                              onTap: () {
+                                // Add your functionality here
+                              },
+                              child: Image.asset(
+                                'assets/images/community.png',
+                                height: 0.16 * wlen,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 80,
+                    ),
+                    Container(
+                    child: Image.asset(
+                      'assets/images/addons2.png', // Replace with the path to your icon
+                     
+                      ),
+                    ),
+                    
+
                    
                               
                   // Add a GridView.builder
