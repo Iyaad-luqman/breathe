@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_to_text.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:permission_handler/permission_handler.dart';
 
 class DetailPage extends StatefulWidget {
@@ -13,63 +12,44 @@ class DetailPage extends StatefulWidget {
   @override
   _DetailPageState createState() => _DetailPageState();
 }
-
 class _DetailPageState extends State<DetailPage> {
-  SpeechToText _speechToText = SpeechToText();
-    bool _speechEnabled = false;
-      String _lastWords = '';
-      String _totaltext = '';
-      String _savedWords = '';
+  stt.SpeechToText _speech = stt.SpeechToText();
+  String _text = '';
+  late TextEditingController _textController; // Declare a TextEditingController
 
   @override
   void initState() {
     super.initState();
-    _initSpeech();
-  }
-  void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
-    setState(() {});
+    _textController = TextEditingController(); // Initialize the TextEditingController
+    _listen();
   }
 
-  /// Each time to start a speech recognition session
-  bool _shouldKeepListening = true;
-  
-void _startListening() async {
-  while (_shouldKeepListening) {
-    _savedWords = _lastWords;
-    await _speechToText.listen(onResult: _onSpeechResult);
-    setState(() {});
-    // Small delay to prevent immediate restart and allow for any necessary cleanup
-    await Future.delayed(Duration(milliseconds: 0));
-    // Assuming _lastWords is updated in _onSpeechResult
-    _totaltext += _lastWords.replaceFirst(_savedWords, " "); // result is "Hello, !"
-    // _totaltext += _lastWords; // This will now add only new words not included in _savedWords
-  }
-}
-
-  /// Manually stop the active speech recognition session
-  /// Note that there are also timeouts that each platform enforces
-  /// and the SpeechToText plugin supports setting timeouts on the
-  /// listen method.
-  void _stopListening() async {
-    await _speechToText.stop();
-    
-    setState(() {
-      _shouldKeepListening = false;
-    });
+  @override
+  void dispose() {
+    _textController.dispose(); // Dispose the controller when the widget is disposed
+    super.dispose();
   }
 
-  /// This is the callback that the SpeechToText plugin calls when
-  /// the platform returns recognized words.
-void _onSpeechResult(SpeechRecognitionResult result) {
-  // Extract new words by removing _savedWords from the result
-  String newWords = result.recognizedWords.replaceFirst(_savedWords, '').trim();
-  setState(() {
-    _lastWords = newWords;
-    // Now _lastWords contains only the new words not previously saved
-  });
-}
-Widget build(BuildContext context) {
+  Future<void> _listen() async {
+    var status = await Permission.microphone.status;
+    if (!status.isGranted) {
+      await Permission.microphone.request();
+    }
+    bool available = await _speech.initialize(
+      onStatus: (val) => print('onStatus: $val'),
+      onError: (val) => print('onError: $val'),
+    );
+    if (available) {
+      await _speech.listen(
+        onResult: (val) => setState(() {
+          _text = val.recognizedWords;
+          _textController.text = _text; // Update the controller's text
+        }),
+      );
+    }
+  }
+
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Details"),
@@ -77,59 +57,66 @@ Widget build(BuildContext context) {
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          child: Column(children: [
-            Card(
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Container(
-                  height: 500,
-                  width: 330, // Set your desired height here
-                  child: _speechToText.isListening ? TextField(
-                    controller: TextEditingController(text: '$_totaltext'),
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+          child: Column(
+            children: [
+              Container(
+                width: 350, // Specify your desired width
+                height: 550, // Specify your desired height
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: TextField(
+                      controller: _textController, // Use the TextEditingController
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: null, // Allows the text field to expand vertically
+                      keyboardType: TextInputType.multiline, // Facilitates multiline input
+                      decoration: InputDecoration(
+                        hintText: "Start speaking...", // Placeholder text
+                        border: InputBorder.none, // Removes the underline
+                      ),
                     ),
-                  ) : _speechEnabled
-                          ? TextField(
-                              controller: TextEditingController(),
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          : Text('Speech not available',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
+              SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  _listen();
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  child: ClipOval(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 5.0),
+                      child: Container(
+                        width: 80.0,
+                        height: 80.0,
+                        child: Icon(
+                          Icons.mic,
+                          color: Color.fromARGB(255, 144, 202, 255), // Lighter shade
+                          size: 45,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your save functionality here
+                },
+                child: Text('Save'),
+              )
+            ],
           ),
         ),
-    
-        SizedBox(
-          height: 20,
-        
-        ),
-      Padding(
-  padding: EdgeInsets.only(top: 50.0,left: 0.0), // Add space above the button
-  child: ElevatedButton(
-    onPressed: _speechToText.isNotListening ? _startListening : _stopListening,
-    child: Icon(_speechToText.isNotListening ? Icons.mic_off : Icons.mic),
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.blue,
-      foregroundColor: Colors.white,
-      shape: CircleBorder(),
-      padding: EdgeInsets.all(20), // Button size
-        ),
-      )
-        ) ],
-        ),
       ),
-    ));
+    );
   }
-
-
-
 }
+
+
