@@ -28,9 +28,9 @@ class PieChartExample extends StatefulWidget {
 
 class _PieChartExampleState extends State<PieChartExample> {
   Map<String, double> dataMap = {
-    "Flutter": 5,
-    "React": 3,
-    "Xamarin": 2,
+    "Happy": 5,
+    "Fear": 3,
+    "Anxious": 2,
     "Ionic": 2,
   };
 

@@ -6,7 +6,7 @@ import 'package:breathe/chatbot.dart';
 import 'package:breathe/login.dart';
 import 'package:breathe/meditation.dart';
 import 'package:breathe/piechart.dart';
-import 'package:breathe/plain_template.dart';
+import 'package:breathe/community_page.dart';
 import 'package:breathe/registration.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
