@@ -5,8 +5,10 @@ import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
 import 'package:breathe/login.dart';
 import 'package:breathe/meditation.dart';
+import 'package:breathe/piechart.dart';
 import 'package:breathe/plain_template.dart';
 import 'package:breathe/registration.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -128,10 +130,15 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Image.asset(
-                      'assets/images/addonspre.png', // Replace with the path to your icon
-                     
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                      child: GestureDetector(
+                      onTap: () {
+                          Navigator.push(
+            context, MaterialPageRoute(builder: (context) =>PieChartExample()));
+                      },
+                      child: Image.asset(
+                        'assets/images/addonspre.png', // Replace with the path to your icon
+                      ),
                       ),
                     ),
                      SizedBox(
