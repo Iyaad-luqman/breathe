@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:ui';
+import 'package:breathe/calander.dart';
 import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
 import 'package:breathe/login.dart';
+import 'package:breathe/meditation.dart';
 import 'package:breathe/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,7 @@ class _HomeState extends State<Home> {
       }
       if (index == 2) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Registration()));
+            context, MaterialPageRoute(builder: (context) => Meditation()));
       }
       if (index == 1) {
         Navigator.push(
@@ -133,6 +135,8 @@ class _HomeState extends State<Home> {
                             Container(
                             child: GestureDetector(
                               onTap: () {
+                                 Navigator.push(
+            context, MaterialPageRoute(builder: (context) => CalendarPage()));
                               // Add your functionality here
                               },
                               child: Image.asset(
