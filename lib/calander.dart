@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'journal_entry-bak.dart';
+import 'journal_entry.dart';
 
 class CalendarPage extends StatefulWidget {
   @override
