@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:breathe/chatbot.dart';
+import 'package:breathe/home.dart';
+import 'package:breathe/meditation.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -7,20 +10,34 @@ class Pie extends StatefulWidget {
   _CommunityPageState createState() => _CommunityPageState();
 }
 
+
 class _CommunityPageState extends State<Pie> {
+    void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+
+      if (index == 0) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      }
+      if (index == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => med()));
+      }
+      if (index == 1) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Chatbot()));
+      }
+    });
+  }
    Map<String, double> dataMap = {
-    "Happy": 5,
-    "Fear": 3,
-    "Anxious": 2,
-    "Ionic": 2,
+    "Happy": 75,
+    "Fear": 12,
+    "Anxious": 09,
+    "Ionic": 04,
   };
   int _selectedIndex = -1;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
 Widget build(BuildContext context) {
@@ -34,6 +51,29 @@ Widget build(BuildContext context) {
               fit: BoxFit.cover,
             ),
           ),
+        ),
+        Column(
+          children: [
+            Container(
+              height: 20,
+              width: double.infinity,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              child: Text(
+                'Mood Tracker',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 
+                ),
+              ),
+            ),
+            Container(
+              height: 20,
+              width: double.infinity,
+            ),
+          ],
         ),
         PieChart(dataMap: dataMap),
                Positioned(

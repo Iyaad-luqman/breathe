@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // Initialize SharedPreferences
         future: SharedPreferences.getInstance(),
         builder: (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {         
-            return Pie(); // Show splash screen while reading preferences
+            return Home(); // Show splash screen while reading preferences
         
         },
       ),
