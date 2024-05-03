@@ -49,9 +49,14 @@ def process_text():
                                 generation_config=generation_config,
                                 safety_settings=safety_settings)
 
+    # prompt_parts = [
+    # "{\n \"prompt\": \" Take these data as the user's background information on his mental health summary. And answer the questions the user based on the user's emotions and mental health well beingness. The user says  \"" + user_input + " \" give him a response based on his mental health summary which is provided in the data. }"
+    # ]
+
     prompt_parts = [
-    "{\n \"prompt\": \" Take these data as the user's background information on his mental health summary. And answer the questions the user based on the user's emotions and mental health well beingness. The user says  \"" + user_input + " \" give him a response based on his mental health summary which is provided in the data. }"
+    "{\n \"prompt\": \" Give response to this user. The user says  \"" + user_input + " \"}"
     ]
+    
 
     response = model.generate_content(prompt_parts)
     response = response.text
