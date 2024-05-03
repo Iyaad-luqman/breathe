@@ -1,4 +1,5 @@
 import 'package:breathe/home.dart';
+import 'package:breathe/plain_template.dart';
 import 'community_page.dart';
 import 'meditation.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // Initialize SharedPreferences
         future: SharedPreferences.getInstance(),
         builder: (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {         
-            return Home(); // Show splash screen while reading preferences
+            return Pie(); // Show splash screen while reading preferences
         
         },
       ),

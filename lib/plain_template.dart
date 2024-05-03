@@ -1,12 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class med extends StatefulWidget {
+class Pie extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CommunityPageState createState() => _CommunityPageState();
 }
 
-class _HomeState extends State<med> {
+class _CommunityPageState extends State<Pie> {
   int _selectedIndex = -1;
 
   void _onItemTapped(int index) {
@@ -23,24 +23,10 @@ Widget build(BuildContext context) {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/Backmed.png'), // Replace with your image path 
+              image: AssetImage('assets/images/Login.png'), // Replace with your image path 
               fit: BoxFit.cover,
             ),
           ),
-        ),
-        Stack(
-          children: [
-            Positioned(
-              bottom: 60,
-              left: 0,
-              right: 0,
-              child: Container(
-                child: Image.asset(
-                  'assets/images/recc.png', // Replace with the path to your icon
-                ),
-              ),
-            ),
-          ],
         ),
         
                Positioned(

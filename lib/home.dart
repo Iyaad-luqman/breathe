@@ -12,6 +12,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import './trend.dart';
 
 
 
@@ -40,7 +41,7 @@ class _HomeState extends State<Home> {
       }
       if (index == 2) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Meditation()));
+            context, MaterialPageRoute(builder: (context) => med()));
       }
       if (index == 1) {
         Navigator.push(
@@ -134,7 +135,7 @@ class _HomeState extends State<Home> {
                       child: GestureDetector(
                       onTap: () {
                           Navigator.push(
-            context, MaterialPageRoute(builder: (context) =>PieChartExample()));
+            context, MaterialPageRoute(builder: (context) =>Pie()));
                       },
                       child: Image.asset(
                         'assets/images/addonspre.png', // Replace with the path to your icon

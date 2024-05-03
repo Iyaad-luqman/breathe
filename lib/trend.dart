@@ -1,12 +1,19 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:pie_chart/pie_chart.dart';
 
-class med extends StatefulWidget {
+class Pie extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CommunityPageState createState() => _CommunityPageState();
 }
 
-class _HomeState extends State<med> {
+class _CommunityPageState extends State<Pie> {
+   Map<String, double> dataMap = {
+    "Happy": 5,
+    "Fear": 3,
+    "Anxious": 2,
+    "Ionic": 2,
+  };
   int _selectedIndex = -1;
 
   void _onItemTapped(int index) {
@@ -23,26 +30,12 @@ Widget build(BuildContext context) {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/Backmed.png'), // Replace with your image path 
+              image: AssetImage('assets/images/Login.png'), // Replace with your image path 
               fit: BoxFit.cover,
             ),
           ),
         ),
-        Stack(
-          children: [
-            Positioned(
-              bottom: 60,
-              left: 0,
-              right: 0,
-              child: Container(
-                child: Image.asset(
-                  'assets/images/recc.png', // Replace with the path to your icon
-                ),
-              ),
-            ),
-          ],
-        ),
-        
+        PieChart(dataMap: dataMap),
                Positioned(
             bottom: 0,
             left: 0,

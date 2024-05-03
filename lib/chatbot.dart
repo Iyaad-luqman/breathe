@@ -29,7 +29,7 @@ class _ChatbotState extends State<Chatbot> {
       }
       if (index == 2) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Meditation()));
+            context, MaterialPageRoute(builder: (context) => med()));
       }
       if (index == 1) {
         Navigator.push(
