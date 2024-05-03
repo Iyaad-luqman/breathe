@@ -69,29 +69,39 @@ void _onSpeechResult(SpeechRecognitionResult result) {
     // Now _lastWords contains only the new words not previously saved
   });
 }
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Details"),
       ),
       body: Center(
-        child: Container(alignment: Alignment.center
-        ,
-        child: Column(children: [
-        Card(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Container(
-              height: 500,
-              width: 330, // Set your desired height here
-              child: Text(
-                  _speechToText.isListening ? '$_totaltext'  : _speechEnabled
-                          ? ''
-                          : 'Speech not available',
-                
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+        child: Container(
+          alignment: Alignment.center,
+          child: Column(children: [
+            Card(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Container(
+                  height: 500,
+                  width: 330, // Set your desired height here
+                  child: _speechToText.isListening ? TextField(
+                    controller: TextEditingController(text: '$_totaltext'),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ) : _speechEnabled
+                          ? TextField(
+                              controller: TextEditingController(),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          : Text('Speech not available',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -102,20 +112,22 @@ void _onSpeechResult(SpeechRecognitionResult result) {
           height: 20,
         
         ),
-      ElevatedButton(
-        onPressed: _speechToText.isNotListening ? _startListening : _stopListening,
-        child: Icon(_speechToText.isNotListening ? Icons.mic_off : Icons.mic),
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue, // Corrected from primary to backgroundColor
-          foregroundColor: Colors.white, // Corrected from onPrimary to foregroundColor
-          shape: CircleBorder(), // Circular button
-          padding: EdgeInsets.all(20), // Button size
+      Padding(
+  padding: EdgeInsets.only(top: 50.0,left: 0.0), // Add space above the button
+  child: ElevatedButton(
+    onPressed: _speechToText.isNotListening ? _startListening : _stopListening,
+    child: Icon(_speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.blue,
+      foregroundColor: Colors.white,
+      shape: CircleBorder(),
+      padding: EdgeInsets.all(20), // Button size
         ),
       )
-        ],),
+        ) ],
         ),
       ),
-    );
+    ));
   }
 
 
