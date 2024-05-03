@@ -1,12 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class comm extends StatefulWidget {
+class CommunityPage extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _CommunityPageState createState() => _CommunityPageState();
 }
 
-class _HomeState extends State<comm> {
+class _CommunityPageState extends State<CommunityPage> {
   int _selectedIndex = -1;
 
   void _onItemTapped(int index) {

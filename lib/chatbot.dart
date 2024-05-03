@@ -4,6 +4,7 @@ import 'package:breathe/home.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'meditation.dart';
 
 class Chatbot extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _ChatbotState extends State<Chatbot> {
   int _selectedIndex = 1;
   Future<List<List<dynamic>>>? _marksFuture;
 
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -25,7 +27,10 @@ class _ChatbotState extends State<Chatbot> {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Home()));
       }
-      if (index == 0) {}
+      if (index == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Meditation()));
+      }
       if (index == 1) {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => Chatbot()));
