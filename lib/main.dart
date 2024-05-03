@@ -1,5 +1,5 @@
 import 'package:breathe/home.dart';
-import 'plain_template.dart';
+import 'community_page.dart';
 import 'meditation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -5,7 +5,7 @@ import 'package:breathe/chart.dart';
 import 'package:breathe/chatbot.dart';
 import 'package:breathe/login.dart';
 import 'package:breathe/meditation.dart';
-import 'package:breathe/plain_template.dart';
+import 'package:breathe/community_page.dart';
 import 'package:breathe/registration.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
