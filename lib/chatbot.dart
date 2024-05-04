@@ -12,7 +12,7 @@ class Chatbot extends StatefulWidget {
 }
 
 class _ChatbotState extends State<Chatbot> {
-  List<String> messages = ['Welcome to Chatbot'];
+  List<String> messages = ['Welcome to Arena'];
   TextEditingController messageController = TextEditingController(); // Step 1
 
   int _selectedIndex = 1;
@@ -45,7 +45,7 @@ class _ChatbotState extends State<Chatbot> {
     return Scaffold(
   appBar: AppBar(
     automaticallyImplyLeading: false,
-    title: Center(child: Text('ChatBot')),
+    title: Center(child: Text('Arena')),
     backgroundColor: Colors.transparent,
     elevation: 0,
     flexibleSpace: ClipRRect(
@@ -94,7 +94,7 @@ class _ChatbotState extends State<Chatbot> {
                               itemCount: messages.length,
                               separatorBuilder: (context, index) => Divider(color: Colors.grey), // Divider between messages
                               itemBuilder: (context, index) {
-                                bool isUserMessage = messages[index].startsWith('User:'); // Check if the message is from the user
+                                bool isUserMessage = messages[index].startsWith('You:'); // Check if the message is from the user
                                 return Align(
                                   alignment: isUserMessage ? Alignment.centerRight : Alignment.centerLeft, // Align based on the sender
                                   child: Container(
@@ -137,7 +137,7 @@ class _ChatbotState extends State<Chatbot> {
                                 icon: Icon(Icons.send, color: Colors.white),
                                 onPressed: () {
                                   setState(() {
-                                    messages.add('User: ${messageController.text}');
+                                    messages.add('You: ${messageController.text}');
                                   });
                                   sendMessage();
                                 },
@@ -234,7 +234,7 @@ Positioned(
         final botResponse = response.body;
   
         setState(() {
-          messages.add('Bot: $botResponse');
+          messages.add('Arena: $botResponse');
         });
       } else {
         // Handle error or unsuccessful response

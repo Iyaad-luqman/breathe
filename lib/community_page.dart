@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:breathe/chatbot.dart';
+import 'package:breathe/home.dart';
+import 'package:breathe/meditation.dart';
 import 'package:flutter/material.dart';
 
 class CommunityPage extends StatefulWidget {
@@ -9,9 +12,22 @@ class CommunityPage extends StatefulWidget {
 class _CommunityPageState extends State<CommunityPage> {
   int _selectedIndex = -1;
 
-  void _onItemTapped(int index) {
+void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+
+      if (index == 0) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      }
+      if (index == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => med()));
+      }
+      if (index == 1) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Chatbot()));
+      }
     });
   }
 
