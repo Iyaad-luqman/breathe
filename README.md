@@ -2,6 +2,23 @@
 
 Breathe is a Flutter-based mental wellness application that leverages the power of Artificial Intelligence to provide a personalized and intuitive user experience.
 
+## UI Screenshots:
+
+<div align="center">
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/abcd0739-da06-4946-a883-2e081b55bf28" width="200" />
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/39a409af-f34b-442d-9efb-479be32914f4" width="200" />
+</div>
+
+<div align="center">
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/9b41786b-2e43-4c5d-bab1-2cfb6526bfde" width="200" />
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/8ad7110a-a373-416b-9956-618f3fc666a9" width="200" />
+</div>
+
+<div align="center">
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/a4ade1d4-caa3-43ee-936d-0ac1eab28def" width="200" />
+  <img src="https://github.com/Iyaad-luqman/breathe/assets/86549899/9c2d76e3-2b8a-4252-8bf8-7755abd15594" width="200" />
+</div>
+
 
 ## Features
 

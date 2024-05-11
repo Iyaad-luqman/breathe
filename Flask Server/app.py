@@ -16,7 +16,7 @@ def process_text():
     if not user_input:
         return jsonify({'error': 'No text provided'}), 400
     
-    genai.configure(api_key="***REMOVED***")
+    genai.configure(api_key="AIzaSyCijAAoN875pE3QOuTP1VVxVbMtXPxKLnE")
 
     # Set up the model
     generation_config = {
