@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 import requests
 import google.generativeai as genai
+import os
+api_key = os.environ.get('API_KEY')
 
 app = Flask(__name__)
 
@@ -73,7 +75,7 @@ def process_journal():
     if not user_input:
         return jsonify({'error': 'No text provided'}), 400
     
-    genai.configure(api_key="***REMOVED***")
+    genai.configure(api_key=api_key)
 
     # Set up the model
     generation_config = {
